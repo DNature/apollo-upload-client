@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-const FileQuery = gql`
+export const FileQuery = gql`
   {
     files {
       id

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDropzone} from 'react-dropzone';
 import { useMutation } from '@apollo/react-hooks';
 import { UploadMutation } from './upload';
+import { FileQuery } from './Uploads';
 
 export default function WithPreviews(props) {
   const [file, setFile] = useState({});
@@ -12,6 +13,7 @@ export default function WithPreviews(props) {
       if(file){
           uploadFile({
             variables: { file },
+            refetchQueries: [{query: FileQuery, variables: file}]
           });
           setFile({})
           console.log("Uploaded successfully: ", file)
